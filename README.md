@@ -6,6 +6,7 @@ First version of Animathed using the [animism](https://github.com/jhol/animism) 
 ## Installation
 
 ```
+$ mkdir videos
 $ pip install pycairo progressbar
 ```
 
