@@ -1,17 +1,15 @@
-Animathed v01
-================
-
-First version of Animathed using the [animism](https://github.com/jhol/animism) library as a base.
+Animathed v01 with Julia
+==========================
 
 ## Installation
 
 ```
 $ mkdir videos
-$ pip install pycairo progressbar
+$ julia packages.jl
 ```
 
 ## Usage
 
 ```
-$ python examples/fade_in_rectangle.py
+$ julia animathed_buffer.jl
 ```
