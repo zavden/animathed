@@ -3,7 +3,8 @@ using Pkg
 dependencies = [
   "Cairo",
   "VideoIO",
-  "FileIO"
+  "FileIO",
+  "ProgressBars"
 ]
 
 Pkg.add(dependencies)

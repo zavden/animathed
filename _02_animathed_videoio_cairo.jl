@@ -5,7 +5,7 @@ using FileIO
 WIDTH  = 600
 HEIGHT = 600
 FPS    = 30
-N_FRAMES = 1000
+N_FRAMES = 900
 
 function get_frame(t)
   c  = CairoRGBSurface(WIDTH, HEIGHT)

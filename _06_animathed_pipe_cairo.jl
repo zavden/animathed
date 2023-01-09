@@ -1,4 +1,5 @@
 using Cairo
+using ProgressBars
 
 # from: https://github.com/JuliaGraphics/Cairo.jl/pull/343/files
 function image_surface_get_data(surface::CairoSurface{T}) where {T}
@@ -10,21 +11,18 @@ end
 WIDTH  = 600
 HEIGHT = 600
 FPS    = 30
-N_FRAMES = 150
+N_FRAMES = 1000
 
 function get_frame(t)
   c  = CairoRGBSurface(WIDTH, HEIGHT)
   cr = CairoContext(c)
-  set_source_rgba(
-    cr,
-    0, 0, 1,
-    t / N_FRAMES
-  )
+  set_source_rgba(cr, 0, 0, 1, t / N_FRAMES)
   rectangle(cr, 0, 0, WIDTH/3, HEIGHT/3)
   fill(cr)
   # Make frame
   c_data_pointer = image_surface_get_data(c)
-  return unsafe_wrap(Vector{UInt32}, c_data_pointer, WIDTH * HEIGHT)
+  frame = unsafe_wrap(Vector{UInt32}, c_data_pointer, WIDTH * HEIGHT)
+  return [frame, c]
 end
 
 command = [
@@ -45,8 +43,10 @@ command = [
 stdin_PIPE = Pipe()
 proc = run(pipeline(`$command`, stdin=stdin_PIPE), wait=false)
 
-for i = 0:N_FRAMES
-  write(stdin_PIPE, get_frame(i))
+for i = tqdm(0:N_FRAMES)
+  frame, c = get_frame(i)
+  write(stdin_PIPE, frame)
+  Cairo.finish(c) # <- Clear cairo buffer
 end
 
 close(stdin_PIPE)
