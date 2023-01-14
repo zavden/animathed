@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 cairo-rs = "0.16.7"
 kdam = "0.3.0"
+rand = "0.8.5"
