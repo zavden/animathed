@@ -8,10 +8,10 @@ function image_surface_get_data(surface::CairoSurface{T}) where {T}
     Ptr{T}, (Ptr{Nothing},), surface.ptr)
 end
 
-WIDTH  = 600
-HEIGHT = 600
-FPS    = 30
-N_FRAMES = 1000
+WIDTH  = 1000
+HEIGHT = 1000
+FPS    = 60
+N_FRAMES = 1200
 
 function get_frame(t)
   c  = CairoRGBSurface(WIDTH, HEIGHT)
@@ -37,7 +37,7 @@ command = [
   "-",
   "-loglevel","error",
   "-vcodec", "libx264", "-pix_fmt","yuv420p",
-  "./videos/out6.mp4",
+  "./videos/_06_pipe_cairo.mp4",
 ]
 
 stdin_PIPE = Pipe()
@@ -46,7 +46,7 @@ proc = run(pipeline(`$command`, stdin=stdin_PIPE), wait=false)
 for i = tqdm(0:N_FRAMES)
   frame, c = get_frame(i)
   write(stdin_PIPE, frame)
-  Cairo.finish(c) # <- Clear cairo buffer
+  Cairo.finish(c) # <- Clean cairo buffer
 end
 
 close(stdin_PIPE)

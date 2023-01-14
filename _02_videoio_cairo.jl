@@ -22,7 +22,7 @@ function get_frame(t)
   return load(buffer)
 end
 
-open_video_out("./videos/out2.mp4", get_frame(0), framerate=FPS) do movie
+open_video_out("./videos/_02_videoio_cairo.mp4", get_frame(0), framerate=FPS) do movie
   for i in 1:N_FRAMES
     write(movie, get_frame(i))
   end

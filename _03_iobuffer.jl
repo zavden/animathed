@@ -22,7 +22,7 @@ command = [
   "-",
   "-loglevel","error",
   "-vcodec", "libx264", "-pix_fmt","yuv420p",
-  "./videos/out3.mp4",
+  "./videos/_04_iobuffer.mp4",
 ]
 
 seekstart(global_buffer)

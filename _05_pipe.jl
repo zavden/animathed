@@ -2,6 +2,7 @@ WIDTH  = 600
 HEIGHT = 600
 FPS    = 30
 N_FRAMES = 150
+
 img = rand(UInt8, WIDTH * HEIGHT * 4)
 
 command = [
@@ -16,7 +17,7 @@ command = [
   "-",
   "-loglevel","error",
   "-vcodec", "libx264", "-pix_fmt","yuv420p",
-  "./videos/out5.mp4",
+  "./videos/_05_pipe.mp4",
 ]
 
 stdin_PIPE = Pipe()

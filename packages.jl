@@ -4,7 +4,9 @@ dependencies = [
   "Cairo",
   "VideoIO",
   "FileIO",
-  "ProgressBars"
+  "ProgressBars",
+  "Colors",
+  "Luxor"
 ]
 
 Pkg.add(dependencies)
