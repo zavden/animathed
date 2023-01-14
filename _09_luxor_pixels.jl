@@ -60,7 +60,7 @@ command = [
   "-",
   "-loglevel","error",
   "-vcodec", "libx264", "-pix_fmt","yuv420p",
-  "./videos/_08_luxor_complex.mp4",
+  "./videos/_09_luxor_pixels.mp4",
 ]
 
 stdin_PIPE = Pipe()
