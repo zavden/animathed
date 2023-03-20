@@ -16,7 +16,6 @@ def draw_frame():
   ctx.set_source_rgba(*rgb(0, 255, 0), 1)
   ctx.fill_preserve()
   # ctx.fill() # kills the path
-  
 
   ctx.set_source_rgba(*rgb(0, 0, 255), 1)
   ctx.set_line_width(60)
